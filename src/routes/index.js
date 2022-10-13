@@ -7,10 +7,6 @@ const getDiets = require('../controllers/get-diets.controller');
 
 const router = Router();
 
-router.get('/', (req, res) => {
-  res.json('Hello World!');
-});
-
 router.get('/recipes', getRecipes);
 
 router.get('/recipes/:id', getRecipesById);
