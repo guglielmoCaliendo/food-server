@@ -3,27 +3,27 @@ const { DataTypes } = require('sequelize');
 const { Sequelize } = require('sequelize');
 const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 
-// let sequelize;
+let sequelize;
 
-// if (process.env.DATABASE_URL) {
-//   // the application is executed on Heroku ... use the postgres database
-const sequelize = new Sequelize(process.env.DATABASE_URL, {
-  dialectOptions: {
-    ssl: {
-      rejectUnauthorized: false,
+if (process.env.DATABASE_URL) {
+  // the application is executed on Heroku ... use the postgres database
+  sequelize = new Sequelize(process.env.DATABASE_URL, {
+    dialectOptions: {
+      ssl: {
+        rejectUnauthorized: false,
+      },
     },
-  },
-});
-// } else {
-//   // the application is executed on the local machine
-//   sequelize = new Sequelize(
-//     `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/food`,
-//     {
-//       logging: false, // set to console.log to see the raw SQL queries
-//       native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-//     }
-//   );
-// }
+  });
+} else {
+  // the application is executed on the local machine
+  sequelize = new Sequelize(
+    `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/food`,
+    {
+      logging: false, // set to console.log to see the raw SQL queries
+      native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+    }
+  );
+}
 
 // const sequelize = new Sequelize(
 //   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/food`,
