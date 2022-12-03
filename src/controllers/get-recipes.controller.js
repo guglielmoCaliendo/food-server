@@ -4,7 +4,7 @@ const axios = require('axios');
 const getRecipes = async (req, res) => {
   try {
     const recipes = await axios(
-      'https://radiant-inlet-02005.herokuapp.com/results'
+      'https://food-server-data-production.up.railway.app/results'
     )
       .then((res) => res.data)
       .catch((err) => err.message);
