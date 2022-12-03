@@ -4,7 +4,7 @@ const { Diet } = require('../db.js');
 const getDiets = async (req, res) => {
   try {
     const diets = await axios(
-      'https://radiant-inlet-02005.herokuapp.com/diets'
+      'https://food-server-data-production.up.railway.app/diets'
     ).then((res) => res.data);
 
     const dbDiets = await Diet.findAll();
